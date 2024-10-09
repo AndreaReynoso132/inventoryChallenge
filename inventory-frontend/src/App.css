@@ -1,0 +1,40 @@
+/* App.css */
+
+/* Aplica el mismo color de fondo que el login */
+body {
+  background-color: #F2F2F2; /* Color de fondo como el login */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Centra el contenedor de la tabla */
+.container-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+/* Botones en la misma línea */
+.buttons-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.table-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.button-primary {
+  background-color: #0367A6;
+  color: white;
+}
+
+.button-secondary {
+  background-color: #D95578;
+  color: white;
+}
