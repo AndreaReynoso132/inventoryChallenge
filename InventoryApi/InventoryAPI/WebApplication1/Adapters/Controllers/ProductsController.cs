@@ -47,7 +47,7 @@ namespace InventoryApi.Adapters.Controllers
                 Description = productDto.Description,
                 Price = productDto.Price,
                 Quantity = productDto.Quantity,
-                Category = productDto.Categoty
+                Category = productDto.Category
             };
 
             await _productRepository.AddProductAsync(product);

@@ -7,6 +7,6 @@
         public decimal Price { get; set; }
         public int Quantity { get; set; }
 
-        public string? Categoty { get; set; }
+        public string? Category { get; set; }
     }
 }
