@@ -54,11 +54,14 @@ const productSlice = createSlice({
         state.products.push(action.payload); // Agregar el nuevo producto al estado
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
+        console.log('Producto actualizado:', action.payload);
         const index = state.products.findIndex((product) => product.id === action.payload.id);
         if (index !== -1) {
-          state.products[index] = action.payload; // Actualizar el producto en el estado
+          state.products[index] = action.payload;
         }
       });
+      
+      
 
   },
 });

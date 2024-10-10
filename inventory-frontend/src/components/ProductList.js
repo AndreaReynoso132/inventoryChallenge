@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, deleteProduct } from '../redux/productSlice';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, Typography, Container, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TextField, TableRow, Paper, IconButton, Typography, Container, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import ProductFilter from './ProductFilter';
 import '../App.css'; 
 
 const ProductList = ({ onEdit }) => {
@@ -20,13 +19,12 @@ const ProductList = ({ onEdit }) => {
     if (status === 'idle') {
       dispatch(fetchProducts());
     }
-  }, [status, dispatch]);
+  }, [status, dispatch, products]);
 
   useEffect(() => {
     setFilteredProducts(products);
   }, [products]);
 
-  // Función para manejar el filtro
   const handleFilter = (searchTerm) => {
     const filtered = products.filter((product) =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -43,11 +41,10 @@ const ProductList = ({ onEdit }) => {
     setOpenDeleteDialog(true);
   };
 
-  // Lógica para eliminar un producto y cerrar el diálogo
   const handleDeleteProduct = () => {
     dispatch(deleteProduct(currentProduct.id)).then(() => {
-      setOpenDeleteDialog(false);  // Cerramos el popup después de la eliminación
-      dispatch(fetchProducts());   // Refresca la lista de productos
+      setOpenDeleteDialog(false);  
+      dispatch(fetchProducts());  
     });
   };
 
@@ -58,39 +55,38 @@ const ProductList = ({ onEdit }) => {
   return (
     <div className="container-centered">
       <Container className="table-container">
-        <Typography variant="h4" component="h2" gutterBottom>
-          Gestión de Productos
-        </Typography>
-
-        {/* Botones */}
-        <div className="buttons-row">
+        <div className="header-row">
           <Button variant="contained" color="primary" onClick={() => onEdit(null)} sx={{ minWidth: '150px' }}>
-            Agregar Nuevo Producto
+            Agregar Producto
           </Button>
           <Button variant="contained" color="secondary" onClick={goToDashboard} sx={{ minWidth: '150px' }}>
             Dashboard
           </Button>
         </div>
 
-        {/* Filtro */}
-        <ProductFilter onFilter={handleFilter} />
+        <TextField
+          fullWidth
+          variant="outlined"
+          placeholder="Buscar productos..."
+          onChange={(e) => handleFilter(e.target.value)}
+          className="search-field"
+        />
 
-        {/* Tabla de productos */}
-        <TableContainer component={Paper} sx={{ width: '100%' }}>
-          <Table>
+        <TableContainer component={Paper} sx={{ width: '100%', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Nombre</TableCell>
-                <TableCell>Descripción</TableCell>
-                <TableCell>Precio</TableCell>
-                <TableCell>Cantidad</TableCell>
-                <TableCell>Categoría</TableCell>
-                <TableCell>Acciones</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#f5f5f5', borderBottom: '2px solid #e0e0e0' }}>Nombre</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#f5f5f5', borderBottom: '2px solid #e0e0e0' }}>Descripción</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#f5f5f5', borderBottom: '2px solid #e0e0e0' }}>Precio</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#f5f5f5', borderBottom: '2px solid #e0e0e0' }}>Cantidad</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#f5f5f5', borderBottom: '2px solid #e0e0e0' }}>Categoría</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#f5f5f5', borderBottom: '2px solid #e0e0e0' }}>Acciones</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {filteredProducts.map((product) => (
-                <TableRow key={product.id}>
+                <TableRow key={product.id} sx={{ '&:hover': { backgroundColor: '#f0f0f0' } }}>
                   <TableCell>{product.name}</TableCell>
                   <TableCell>{product.description}</TableCell>
                   <TableCell>${product.price}</TableCell>
@@ -110,7 +106,6 @@ const ProductList = ({ onEdit }) => {
           </Table>
         </TableContainer>
 
-        {/* Popup de confirmación de eliminación */}
         <Dialog open={openDeleteDialog} onClose={() => setOpenDeleteDialog(false)}>
           <DialogTitle>Confirmar Eliminación</DialogTitle>
           <DialogContent>

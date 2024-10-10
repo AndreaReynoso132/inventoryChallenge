@@ -7,7 +7,6 @@ const initialState = {
   error: null,
 };
 
-// Login
 export const login = createAsyncThunk('auth/login', async (credentials) => {
   const response = await axios.post('https://localhost:7140/api/auth/login', credentials);
   return response.data;

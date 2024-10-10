@@ -1,12 +1,9 @@
-/* App.css */
 
-/* Aplica el mismo color de fondo que el login */
 body {
-  background-color: #F2F2F2; /* Color de fondo como el login */
+  background-color: #F2F2F2;
   font-family: 'Roboto', sans-serif;
 }
 
-/* Centra el contenedor de la tabla */
 .container-centered {
   display: flex;
   justify-content: center;
@@ -15,7 +12,6 @@ body {
   padding: 20px;
 }
 
-/* Botones en la misma línea */
 .buttons-row {
   display: flex;
   justify-content: space-between;
@@ -37,4 +33,106 @@ body {
 .button-secondary {
   background-color: #D95578;
   color: white;
+}
+
+.button-logout {
+  margin-left: auto; 
+}
+
+body {
+  background-color: #F5F5F5; 
+  font-family: 'Roboto', sans-serif;
+}
+.dashboard-title {
+  color: #3f51b5; 
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #FFFFFF; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
+  padding: 20px;
+}
+
+.grid-container {
+  margin-top: 20px;
+}
+
+.chart-title {
+  color: #333; 
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.chart {
+  height: 400px;
+  width: 100%;
+}
+
+h4, h6 {
+  color: #0367A6; 
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-field {
+  margin: 20px 0;
+  width: 100%; 
+}
+
+.container-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table-container {
+  width: 100%;
+}
+
+.container-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.search-field {
+  margin-bottom: 20px;
+}
+
+.MuiTableCell-root {
+  padding: 16px;
+}
+
+.MuiTableRow-root:hover {
+  background-color: #f0f0f0; 
+}
+
+.MuiTableHead-root th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border-bottom: 2px solid #e0e0e0;
 }
